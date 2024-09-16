@@ -16,6 +16,26 @@ empilée, puis dépilée lorsqu'on annule la frappe ;
 - les fonctions récursives
 ============================Exercice 1:Compléter le code de la classe Pile
 '''
+
+'''A stack can be seen as a list on which access is restricted: 
+elements can only be inserted at one end, called the top of the stack, 
+you can only remove an element if it is at the top, and you can only see an element in the stack 
+only if it's at the top. If you need to access an element that is not at the top, 
+you have to remove the elements on top one by one, starting from the top.
+In English, this type of structure is called LIFO: Last In, First Out. 
+An analogy can be made with a stack of plates: you can only see the plate on top, you add a new plate from above, and you can only remove the plate on top. If you need to access the other plates, you have to remove the ones on top one by one.
+The notion of stack is fundamental to computing and has many applications. 
+For example
+- Internet browsers, which use stacks to store visited pages 
+(the address of each new page visited is stacked, and when you click on “previous
+or “back one page” to unstack it);
+- post-fixed Polish notation;
+- the “undo typing” function in word-processing programs: each new action is
+then unstacked when the keystroke is cancelled;
+- recursive functions
+============================Exercise 1:Complete the code for the Stack class
+'''
+
 class Pile(object):
     def __init__(self, lst):
         """
@@ -60,22 +80,29 @@ class Pile(object):
         Retourne l'élément au sommet de la pile sans le retirer.        
         :return: L'élément au sommet de la pile.
         """
-        pass
+        return self.lst[0]
+        # pass
 
     def est_pile_vide(self):
         """
         Vérifie si la pile est vide.        
         :return: True si la pile est vide, False sinon.
         """
-        pass
+        if len(self.lst) = 0:
+            return True
+        else:
+            return False
+        # pass
     
     def hauteur(self):
         """
         Retourne le nombre d'éléments dans la pile.        
         :return: La hauteur de la pile.
         """
-        pass
-
+        hauteur = len(self.lst)
+        return hauteur
+        # pass
+# __________________________________________________________________ STOP and Test the above 🛑 _______________________________________________
 '''
 Exercice 2- Expressions bien parenthésées
 On veut construire à l'aide d'une pile un vérificateur de parenthésage. 
