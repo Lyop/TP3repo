@@ -138,26 +138,31 @@ If pile is empty at the end, return Balanced otherwise, Unbalanced.
 def parenthesage(expr):
     # les fermants sont rangés dans le même ordre que les ouvrants
     ouv, fer =  ['(','[','('], [')',']', '}'] 
-    pile = []
+    pile = Pile([]) 
 
     for string in expr:
         if string in ouv:
-            pile.append(string)
+            position = ouv.index(string)
+            pile.empiler(fer[position])
         
         elif string in fer:
-            position = fer.index(string)
-            if ((len(pile) > 0) and
-                (expr[position] == pile[len(pile)-1])):
-                pile.pop()
-            else:
-                print("NO")
+            if pile.est_pile_vide():
+                print("There's an extra closing bracket")
                 return False
-            if len(pile) == 0:
-                print("YES")
-                return True
-            else:
-                print("NO")
+
+            elif pile.sommet() == string:
+                pile.depiler()
+
+            else: 
+                print("There's an open bracket without a closing one :(")
                 return False
+            
+    if pile.est_pile_vide():
+        print("The stack is empty: it's all good")
+        return True
+    else:
+        print("There's an extra bracket/parenthesis")
+        return True
 
 
 '''
@@ -204,6 +209,7 @@ if __name__ == "__main__":
     print(f"Sommet: {pile.depiler()}")
     
     print('Bien Parenthésée? ', parenthesage("(([{]}))"))
+    print('Bien Parenthésée? ', parenthesage("(())"))
     
     exp = ['3','42','13', '+', '*', '5','-']
     print(f"{exp} = {polonaise(exp)}")
