@@ -76,9 +76,9 @@ class Pile(object):
         Retire l'élément au sommet de la pile et le retourne.        
         :return: L'élément qui était au sommet de la pile.
         """
-        old = len(self.pile)
+        old = self.pile[0]
 
-        self.pile = self.pile
+        del self.pile[0]
         return old
        
     
@@ -87,7 +87,7 @@ class Pile(object):
         Retourne l'élément au sommet de la pile sans le retirer.        
         :return: L'élément au sommet de la pile.
         """
-        return self.lst[0]
+        return self.pile[0]
         # pass
 
     def est_pile_vide(self):
@@ -95,7 +95,7 @@ class Pile(object):
         Vérifie si la pile est vide.        
         :return: True si la pile est vide, False sinon.
         """
-        if len(self.lst) == 0:
+        if len(self.pile) == 0:
             return True
         else:
             return False
@@ -106,10 +106,12 @@ class Pile(object):
         Retourne le nombre d'éléments dans la pile.        
         :return: La hauteur de la pile.
         """
-        hauteur = len(self.lst)
+        hauteur = len(self.pile)
         return hauteur
         # pass
 # __________________________________________________________________ STOP and Test the above 🛑 _______________________________________________
+# ✔ Done
+
 '''
 Exercice 2- Expressions bien parenthésées
 On veut construire à l'aide d'une pile un vérificateur de parenthésage. 
@@ -165,18 +167,18 @@ def polonaise(exp):
 if __name__ == "__main__":
     
     pile = Pile([])
-    # print(pile)
-    # pile.empiler(-5)
-    # pile.empiler(-8)
+    print(pile)
+    pile.empiler(-5)
+    pile.empiler(-8)
     print(pile)
     print(f"Pile est vide? {pile.est_pile_vide()}")
     print(f"Hauteur de pile: {pile.hauteur()}")
-    # print(f"Sommet: {pile.depiler()}")
+    print(f"Sommet: {pile.depiler()}")
     
-    # print('Bien Parenthésée? ', parenthesage("(([{]}))"))
+    print('Bien Parenthésée? ', parenthesage("(([{]}))"))
     
     exp = ['3','42','13', '+', '*', '5','-']
-    # print(f"{exp} = {polonaise(exp)}")
+    print(f"{exp} = {polonaise(exp)}")
        
 
     
