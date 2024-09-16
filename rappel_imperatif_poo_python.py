@@ -42,7 +42,7 @@ class Pile(object):
         Initialise la pile avec une liste.        
         :param lst: Liste des éléments qui seront convertis en pile.
         """
-        pass        
+        self.pile = lst      
     
     def __repr__(self):
         """
@@ -56,7 +56,11 @@ class Pile(object):
         ||5||
          Bas        
         """
-        pass
+        retext = "Sommet\n"
+        for val in range(len(self.pile)):
+            retext = retext + "||" + str(self.pile[val]) + "||\n"
+        retext = retext + "Bas"
+        return retext
         
     
     def empiler(self, e):
@@ -64,7 +68,7 @@ class Pile(object):
         Ajoute un élément au sommet de la pile.        
         :param e: Élément à empiler.
         """
-        pass
+        self.pile.insert(0, e)
        
     
     def depiler(self):
@@ -72,7 +76,10 @@ class Pile(object):
         Retire l'élément au sommet de la pile et le retourne.        
         :return: L'élément qui était au sommet de la pile.
         """
-        pass
+        old = len(self.pile)
+
+        self.pile = self.pile
+        return old
        
     
     def sommet(self):
