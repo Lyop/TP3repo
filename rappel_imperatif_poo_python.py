@@ -17,23 +17,23 @@ empilée, puis dépilée lorsqu'on annule la frappe ;
 ============================Exercice 1:Compléter le code de la classe Pile
 '''
 
-'''A stack can be seen as a list on which access is restricted: 
-elements can only be inserted at one end, called the top of the stack, 
-you can only remove an element if it is at the top, and you can only see an element in the stack 
+'''A pile can be seen as a list on which access is restricted: 
+elements can only be inserted at one end, called the top of the pile, 
+you can only remove an element if it is at the top, and you can only see an element in the pile 
 only if it's at the top. If you need to access an element that is not at the top, 
 you have to remove the elements on top one by one, starting from the top.
 In English, this type of structure is called LIFO: Last In, First Out. 
-An analogy can be made with a stack of plates: you can only see the plate on top, you add a new plate from above, and you can only remove the plate on top. If you need to access the other plates, you have to remove the ones on top one by one.
-The notion of stack is fundamental to computing and has many applications. 
+An analogy can be made with a pile of plates: you can only see the plate on top, you add a new plate from above, and you can only remove the plate on top. If you need to access the other plates, you have to remove the ones on top one by one.
+The notion of pile is fundamental to computing and has many applications. 
 For example
-- Internet browsers, which use stacks to store visited pages 
-(the address of each new page visited is stacked, and when you click on “previous
-or “back one page” to unstack it);
+- Internet browsers, which use piles to store visited pages 
+(the address of each new page visited is pileed, and when you click on “previous
+or “back one page” to unpile it);
 - post-fixed Polish notation;
 - the “undo typing” function in word-processing programs: each new action is
-then unstacked when the keystroke is cancelled;
+then unpileed when the keystroke is cancelled;
 - recursive functions
-============================Exercise 1:Complete the code for the Stack class
+============================Exercise 1:Complete the code for the pile class
 '''
 
 class Pile(object):
@@ -127,10 +127,38 @@ print('Bien Parenthésée? ', parenthage("(([{}])"))
 print('Bien Parenthésée? ', parenthage("(([{]}))"))
     affiche: False car Un fermant ferme un ouvrant qui ne lui correspond pas.
 '''
+
+'''
+Exercise 2- expressions
+Using pile One approach to check balanced parentheses is to use pile. 
+Each time, when an open parentheses is encountered push it in the pile, and when closed parenthesis is encountered, match it with the top of pile and pop it. 
+If pile is empty at the end, return Balanced otherwise, Unbalanced. 
+'''
+
 def parenthesage(expr):
     # les fermants sont rangés dans le même ordre que les ouvrants
     ouv, fer =  ['(','[','('], [')',']', '}'] 
-    pass
+    pile = []
+
+    for string in expr:
+        if string in ouv:
+            pile.append(string)
+        
+        elif string in fer:
+            position = fer.index(string)
+            if ((len(pile) > 0) and
+                (expr[position] == pile[len(pile)-1])):
+                pile.pop()
+            else:
+                print("NO")
+                return False
+            if len(pile) == 0:
+                print("YES")
+                return True
+            else:
+                print("NO")
+                return False
+
 
 '''
 Exrecice 3: Notation Polonaise
