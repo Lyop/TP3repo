@@ -88,7 +88,7 @@ class Pile(object):
         Vérifie si la pile est vide.        
         :return: True si la pile est vide, False sinon.
         """
-        if len(self.lst) = 0:
+        if len(self.lst) == 0:
             return True
         else:
             return False
@@ -158,18 +158,18 @@ def polonaise(exp):
 if __name__ == "__main__":
     
     pile = Pile([])
-    print(pile)
-    pile.empiler(-5)
-    pile.empiler(-8)
+    # print(pile)
+    # pile.empiler(-5)
+    # pile.empiler(-8)
     print(pile)
     print(f"Pile est vide? {pile.est_pile_vide()}")
     print(f"Hauteur de pile: {pile.hauteur()}")
-    print(f"Sommet: {pile.depiler()}")
+    # print(f"Sommet: {pile.depiler()}")
     
-    print('Bien Parenthésée? ', parenthesage("(([{]}))"))
+    # print('Bien Parenthésée? ', parenthesage("(([{]}))"))
     
     exp = ['3','42','13', '+', '*', '5','-']
-    print(f"{exp} = {polonaise(exp)}")
+    # print(f"{exp} = {polonaise(exp)}")
        
 
     
